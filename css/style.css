@@ -9,7 +9,7 @@
 
 body {
     font-size: 16px;
-    background: #D1E9F1;
+    background: #535353;
     font-family: "Roboto Condensed", Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -42,12 +42,20 @@ body {
 
 .wrapper-list ul.list li {
     position: relative;
-    background-color: #e7f4f9;
+    background-color: #d6eef7;
     border-bottom: 1px solid #6ec9f1;
     color: #323234;
     display: flex;
     align-items: center;
     padding: 20px;
+}
+
+.wrapper-list ul.list li.removed {
+    animation: collapseItem 300ms ease;
+}
+
+.wrapper-list ul.list li.hidden {
+    display: none;
 }
 
 .wrapper-list ul.list li:hover button.remove {
@@ -56,11 +64,12 @@ body {
 }
 
 .wrapper-list ul.list li:hover {
-    background-color: #f1f6f9;
+    background-color: #e5f3fc;
     transition: background-color 200ms ease;
 }
 
 .wrapper-list ul.list .check {
+    position: relative;
     background-color: #fefefe;
     border-radius: 50%;
     width: 20px;
@@ -71,8 +80,25 @@ body {
 
 }
 
-.wrapper-list ul.list .check:hover {
+.wrapper-list ul.list .check:hover,
+.wrapper-list ul.list.done .check {
     background-color: #92d5f1;
+}
+
+.wrapper-list ul.list .done .check:after {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(146, 196, 146);
+}
+
+.wrapper-list ul.list .done .task {
+    text-decoration: line-through;
 }
 
 .wrapper-list button.remove {
@@ -96,13 +122,27 @@ body {
 }
 
 .todoList footer {
-    background-color: #bad6e3;
+    background-color: #c2e0ef;
 }
 
 .todoList footer input {
-    background-color: #bad6e3;
-    border: ;
+    background-color: #c2e0ef;
     border: none;
     outline: none;
     width: 90%;
+    padding: 20px;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: 1.2em;
+    color: #323234;
+}
+
+
+@keyframes collapseItem {
+    0% {
+        transform: rotatex(0deg);
+    }
+
+    100% {
+        transform: rotatex(-90deg);
+    }
 }
